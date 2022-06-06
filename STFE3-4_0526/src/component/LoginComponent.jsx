@@ -8,15 +8,11 @@ function LoginComponent(props) {
 
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
   let timer = null;
-
   useEffect(() => {
-    /* ... */
-
     clearTimeout(timer);
     timer = setTimeout(() => {
       setMsg();
@@ -25,34 +21,34 @@ function LoginComponent(props) {
 
   const LoginFunc = (e) => {
     e.preventDefault();
-    /* ... */
-    // 아무것도 안적었을 때
-   if(id.trim() === "")
-    setMsg('id를 입력해주세요.')
-    return; 
-  if(password.trim() === "")
-    setMsg('password를 입력해주세요.')
+    //아무것도 안적었을 때
+    if (id.trim() === "") setMsg("Id를 입력해주세요.");
     return;
+    if (password.trim() === "") setMsg("password를 입력해주세요.");
+    return;
+    // return이 여기서 의마하는 것은 다음 코딩은 무시하고 여기까지만 실해시키고 함수를 종료해라,
+    // 그리고 다음에 무언가 적혀 있으면, 이함수를 호출한 녀석에게 다음에 적혀있는 것을 반환해라
     let body = {
-     id: id.trim()
-     password: password.trim()
+      id: id.trim(),
+      password: password.trim(),
     };
 
     axios.post("https://st-fe34.herokuapp.com/api/login", body).then((res) => {
       console.log(res.data);
       let code = res.data.code;
       if (code === 200) {
-        setMsg("로그인 성공!");
+        setMsg("로그인 성공");
         dispatch(
           loginUser({
             ...res.data.userInfo,
             isLogin: true,
           })
         );
+        // id와 password를 잘못 적었을 때
       } else if (code === 400) {
         setMsg("회원가입을 해주세요.");
       } else if (code === 401) {
-        setMsg("존재하지 않는 ID 입니다.");
+        setMsg("존재하지 않는 id입니다.");
       } else if (code === 402) {
         setMsg("비밀번호가 틀렸습니다.");
       }
@@ -83,5 +79,4 @@ function LoginComponent(props) {
     </>
   );
 }
-
 export default LoginComponent;
