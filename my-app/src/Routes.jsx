@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
-import signUp from "./components/signUp";
+import SignUp from "./components/SignUp";
 
 function Routes() {
   return (
@@ -11,7 +11,7 @@ function Routes() {
           <Link to="/">LoginForm</Link>
         </li>
         <li>
-          <Link to="/signUp">signUp</Link>
+          <Link to="/SignUp">SignUp</Link>
         </li>
       </ul>
     </Outlet>

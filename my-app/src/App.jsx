@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoginForm from "./components/LoginForm";
-import SignUp from "./components/signUp";
+import SignUp from "./components/SignUp";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
       ) : (
         <Routes>
           <Route path="/" element={<LoginForm Login={Login} error={error} />} />
-          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/SignUp" element={<SignUp />} />
         </Routes>
       )}
     </div>
