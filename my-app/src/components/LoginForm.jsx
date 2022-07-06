@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useInternalRouter } from "../routing";
+
 function LoginForm({ Login, error }) {
   const [details, setDetails] = useState({ email: "", password: "" });
 
@@ -10,8 +12,9 @@ function LoginForm({ Login, error }) {
   };
   const signUp = (e) => {
     e.preventDefault(); // 새로고침을 막는다.
-    push("/signUp");
+    push("/SignUp");
   };
+
   return (
     <form onSubmit={submitHandler}>
       <div className="form-inner">
@@ -42,9 +45,10 @@ function LoginForm({ Login, error }) {
           />
         </div>
         <input type="submit" value="이메일로 로그인"></input>
-        <input type="submit" value="아이디 비밀번호 찾기"></input>
-        <input onClick={signUp} type="submit" value="회원가입"></input>
-        {/* <button onClick={signUp}>회원가입</button> */}
+        {/* <a href="https://www.naver.com">회원가입</a> */}
+        <Link target="_blank" to="/SignUp" value="회원가입">
+          회원가입
+        </Link>
       </div>
     </form>
   );
