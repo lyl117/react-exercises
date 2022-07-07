@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/signup/SignUp";
 
 function Routes() {
   return (

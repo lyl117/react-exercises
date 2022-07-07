@@ -1,13 +1,35 @@
 import React, { useState } from "react";
 import LoginForm from "./components/LoginForm";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/signup/SignUp";
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
+import LoginUser from "axios";
 
 function App() {
-  const adminuser = {
+  const LoginUser = {
     email: "lyl117@gmail.com",
     password: "1234",
   };
+
+  console.log(LoginUser);
+  axios.post("/api/user/login", LoginUser).then((res) => {
+    console.log(res);
+    // console.log(res.data?.message);
+  });
+
+  const RegisterUser = {
+    email: "lyl117@gmail.com",
+    password: "1234",
+    name: "이유림",
+    gender: "여자",
+    birth: "20220707",
+  };
+
+  console.log(RegisterUser);
+  axios.post("/api/user/register", RegisterUser).then((res) => {
+    console.log(res);
+    // console.log(res.data?.message);
+  });
 
   const [user, setUser] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -16,8 +38,8 @@ function App() {
     console.log(details);
 
     if (
-      details.email == adminuser.email &&
-      details.password == adminuser.password
+      details.email == LoginUser.email &&
+      details.password == LoginUser.password
     ) {
       console.log("로그인되었습니다.");
       setUser({
@@ -52,5 +74,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
