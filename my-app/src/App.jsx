@@ -67,7 +67,11 @@ function App() {
         </div>
       ) : (
         <Routes>
-          <Route path="/" element={<LoginForm Login={Login} error={error} />} />
+          <Route
+            path="/"
+            exact={true}
+            element={<LoginForm Login={Login} error={error} />}
+          />
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>
       )}
