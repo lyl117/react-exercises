@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useInternalRouter } from "../routing";
 
+// import Register from "./signup/SignUp";
+
 function LoginForm({ Login, error }) {
-  const [details, setDetails] = useState({ email: "", password: "" });
+  const [details, setDetails] = useState({ id: "", password: "" });
 
   const { push } = useInternalRouter();
   const submitHandler = (e) => {
@@ -12,7 +14,7 @@ function LoginForm({ Login, error }) {
   };
   const signUp = (e) => {
     e.preventDefault(); // 새로고침을 막는다.
-    push("/SignUp");
+    push("/Register");
   };
 
   return (
@@ -21,14 +23,14 @@ function LoginForm({ Login, error }) {
         <h2>로그인</h2>
         {error != "" ? <div className="error">{error}</div> : ""}
         <div className="from-group">
-          <label htmlFor="email"></label>
+          <label htmlFor="id"></label>
           <input
-            type="email"
-            name="email"
-            id="email"
+            type="id"
+            name="id"
+            id="id"
             placeholder="이메일"
-            onChange={(e) => setDetails({ ...details, email: e.target.value })}
-            value={details.email}
+            onChange={(e) => setDetails({ ...details, id: e.target.value })}
+            value={details.id}
           />
         </div>
         <div className="form-group">
@@ -45,8 +47,7 @@ function LoginForm({ Login, error }) {
           />
         </div>
         <input type="submit" value="이메일로 로그인"></input>
-        {/* <a href="https://www.naver.com">회원가입</a> */}
-        <Link target="_blank" to="/SignUp" value="회원가입">
+        <Link target="_blank" to="/Register" value="회원가입">
           회원가입
         </Link>
       </div>

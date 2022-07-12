@@ -1,49 +1,75 @@
 import React, { useState } from "react";
 import LoginForm from "./components/LoginForm";
-import SignUp from "./components/signup/SignUp";
+import Register from "./components/signup/SignUp";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import LoginUser from "axios";
+// import withRedux from "next-redux-wrapper";
 
 function App() {
-  const LoginUser = {
-    email: "lyl117@gmail.com",
-    password: "1234",
-  };
+  // const RegisterUser = {
+  //   id: "qkqh@gmail.com",
+  //   password: "bnbn1234",
+  //   name: "아무개",
+  //   gender: "남성",
+  //   number: "20220707",
+  //   birth: "20220707",
+  // };
 
-  console.log(LoginUser);
-  axios.post("/api/user/login", LoginUser).then((res) => {
-    console.log(res);
-    // console.log(res.data?.message);
-  });
+  // console.log(RegisterUser);
+  // axios.post("/api/user/register", RegisterUser).then((res) => {
+  //   console.log(res);
+  //   // console.log(res.data?.message);
+  // });
+  // axios({
+  //   method: "POST",
+  //   url: "/api/user/register",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   data: {
+  //     id: "qkqh@gmail.com",
+  //     password: "bnbn1234",
+  //     name: "아무개",
+  //     gender: "남성",
+  //     number: "20220707",
+  //     birth: "20220707",
+  //   },
+  // });
 
-  const RegisterUser = {
-    email: "lyl117@gmail.com",
-    password: "1234",
-    name: "이유림",
-    gender: "여자",
-    birth: "20220707",
-  };
-
-  console.log(RegisterUser);
-  axios.post("/api/user/register", RegisterUser).then((res) => {
-    console.log(res);
-    // console.log(res.data?.message);
-  });
-
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ id: "", password: "" });
   const [error, setError] = useState("");
-
   const Login = (details) => {
-    console.log(details);
+    // const axios_post = () => {
+    //   const LoginUser = {
+    //     id: "qkqh@gmail.com",
+    //     password: "bnbn1234",
+    //   };
+    //   axios
+    //     .post("https://stfe-gotogether.herokuapp.com/user/login")
+    //     .then((response) => {
+    //       console.log(response);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // };
+    const LoginUser = {
+      id: "qkqh@gmail.com",
+      password: "bnbn1234",
+    };
 
-    if (
-      details.email == LoginUser.email &&
-      details.password == LoginUser.password
-    ) {
+    // console.log(LoginUser);
+    axios
+      .post("https://stfe-gotogether.herokuapp.com/user/login", LoginUser)
+      .then((res) => {
+        console.log(res);
+      });
+
+    if (details.id == LoginUser.id && details.password == LoginUser.password) {
       console.log("로그인되었습니다.");
       setUser({
-        email: details.email,
+        id: details.id,
         password: details.password,
       });
     } else {
@@ -53,15 +79,15 @@ function App() {
   };
 
   const Logout = () => {
-    setUser({ email: "", password: "" });
+    setUser({ id: "", password: "" });
   };
 
   return (
     <div className="App">
-      {user.email != "" ? (
+      {user.id != "" ? (
         <div className="welcome">
           <h2>
-            Weclome,<span>{user.email}</span>
+            Weclome,<span>{user.id}</span>
           </h2>
           <button onClick={Logout}>Logout</button>
         </div>
@@ -72,10 +98,12 @@ function App() {
             exact={true}
             element={<LoginForm Login={Login} error={error} />}
           />
-          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/Register" element={<Register />} />
         </Routes>
       )}
     </div>
   );
 }
+
 export default App;
+// wrapper.withRedux(NodeBird);
