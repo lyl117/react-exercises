@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-export function useInternalRouter() {
+function useInternalRouter() {
   const navigate = useNavigate();
   return useMemo(() => {
     return {
@@ -14,3 +14,4 @@ export function useInternalRouter() {
     };
   }, [navigate]);
 }
+export default useInternalRouter;
