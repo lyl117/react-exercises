@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import LoginFormStyle from "./LoginFromStyle";
 import { useForm } from "react-hook-form";
 import vector from "../../asset/img/Vector10.png";
+import axios from "axios";
 
 const LoginForm = () => {
   const {
@@ -14,8 +15,18 @@ const LoginForm = () => {
   const password = useRef();
   password.current = watch("password");
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (e) => {
+    // console.log(data);
+    //api 요청
+    const fetchData = async () => {
+      console.log(inputs);
+      const res = await axios.post("/api/user/login", inputs);
+      console.log(res);
+    };
+    function submit(e) {
+      e.preventDefault();
+      fetchData();
+    }
   };
 
   return (
