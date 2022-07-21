@@ -11,7 +11,7 @@ const LoginFormStyle = styled.div`
   height: 812px;
   background: #ffffff;
 
- .login{
+  .login {
     display: relative;
     align-items: center;
     text-align: center;
@@ -21,9 +21,8 @@ const LoginFormStyle = styled.div`
     font-size: 22px;
     line-height: 38px;
     border-bottom: 1px solid #949494;
-    width: 390px;
+    width: 380px;
     margin-left: -10px;
- }
   }
   img {
     width: 9.6px;
@@ -40,15 +39,25 @@ const LoginFormStyle = styled.div`
     border-radius: 999px;
     width: 343px;
     height: 30px;
-    radius: 999px;
-    align-items: center;
-    display: relative;
   }
   input[type="email"] {
-    margin: 29px 16px 10px;
+    position: absolute;
+    width: 343px;
+    left: -14px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
   }
+
   input[type="password"] {
-    margin: 10px 16px 15px;
+    position: absolute;
+    width: 343px;
+    left: -14px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 73px;
   }
   .emailLogin {
     width: 343px;
@@ -65,7 +74,12 @@ const LoginFormStyle = styled.div`
     line-height: 22px;
     border: 0;
     outline: 0;
-    margin: 15px 16px;
+    position: absolute;
+    margin-top: 120px;
+    left: -14px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
